@@ -155,7 +155,10 @@ void Game::BlockFixChange() {
   currentBlock = nextBlock;
   if (CheckCollisions() == false) gameOver = 1;
   nextBlock = GetRandomBlock();
-  if (grid.ClearFullRows()) PlaySound(clear);
+  if (int num = grid.ClearFullRows()) {
+    PlaySound(clear);
+    RowsScore(num);
+  }
 }
 
 void Game::RowsScore(int num) {
